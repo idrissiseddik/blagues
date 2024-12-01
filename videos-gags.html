@@ -16,20 +16,18 @@
             color: #333;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            padding-bottom: 60px; /* Espace pour le footer */
             margin: 0;
-            overflow: hidden;
             position: relative;
         }
         header {
-            background-color: #004085; /* Nouvelle couleur de fond pour le header */
-            color: white; /* Couleur du texte */
+            background-color: #004085; /* Couleur du header */
+            color: white;
             text-align: center;
-            padding: 15px; /* Réduire le padding pour un header plus compact */
+            padding: 15px;
             width: 100%;
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             z-index: 10;
@@ -39,7 +37,7 @@
             color: #333;
             padding: 10px;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 100px; /* Ajout de l'espace sous le header */
             width: 80%;
             max-width: 600px;
             height: 70px;
@@ -54,10 +52,6 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 14px;
-        }
-        .advertisement p {
-            font-size: 12px;
-            margin-top: 5px;
         }
         .video-container {
             position: relative;
@@ -82,9 +76,6 @@
             justify-content: center;
             align-items: center;
             margin-top: 20px;
-            position: absolute;
-            bottom: 50px;
-            width: 100%;
         }
         .btn {
             background-color: #007BFF;
@@ -106,13 +97,14 @@
         }
         footer {
             text-align: center;
-            background-color: #222; /* Nouvelle couleur de fond pour le footer */
+            background-color: #222;
             color: white;
-            padding: 5px; /* Réduire le padding du footer */
-            font-size: 12px; /* Réduire la taille de l'écriture */
+            padding: 5px;
+            font-size: 12px;
             position: fixed;
             width: 100%;
             bottom: 0;
+            height: 50px; /* Hauteur du footer */
         }
         .no-right-click {
             position: absolute;
@@ -125,7 +117,7 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            display: none; /* Masqué par défaut */
+            display: none;
         }
     </style>
 </head>
@@ -152,41 +144,34 @@
         <input type="range" id="volumeControl" class="volume-control" min="0" max="100" value="100">
     </div>
 
-  <footer>
-    <p>&copy; 2024 Vidéos Gags | Site Développé par M.Seddik Elidrissi</p>
-  </footer>
+    <footer>
+        <p>&copy; 2024 Vidéos Gags | Site Développé par M.Seddik Elidrissi</p>
+    </footer>
 
-    <!-- Message de désactivation du clic droit -->
     <div class="no-right-click" id="noRightClickMessage">
         Développé par M.Seddik El Idrissi
     </div>
 
     <script>
-        // Liste des sites amis et leurs slogans
         const ads = [
             { url: "https://idrissiseddik.github.io/quran", slogan: "La beauté du Saint Coran, accessible à tous, partout.. - Cliquez ici" },
             { url: "https://idrissiseddik.github.io/radios", slogan: "Le Maroc vous parle, écoutez ses radios pour ne rien manquer ! - Cliquez ici." },
             { url: "https://idrissiseddik.github.io/blagues", slogan: "Le rire est la meilleure médecine, venez en prendre une dose ! - Cliquez ici." }
         ];
 
-        // Fonction pour afficher une publicité
         function displayAd(index) {
             const ad = ads[index];
             const adContainer = document.getElementById('advertisement');
-            adContainer.innerHTML = `
-                <a href="${ad.url}" target="_blank">${ad.slogan}</a>
-            `;
+            adContainer.innerHTML = `<a href="${ad.url}" target="_blank">${ad.slogan}</a>`;
         }
 
-        // Affichage dynamique des publicités toutes les 5 secondes
         let currentAdIndex = 0;
         function cycleAds() {
             displayAd(currentAdIndex);
-            currentAdIndex = (currentAdIndex + 1) % ads.length; // Revenir à la première publicité après la dernière
+            currentAdIndex = (currentAdIndex + 1) % ads.length;
         }
-        setInterval(cycleAds, 5000); // Changer toutes les 5 secondes
+        setInterval(cycleAds, 5000);
 
-        // Fonction pour obtenir un ID vidéo aléatoire
         const videoIds = [
             "WiXocnloLxM", 
             "2v3mLxd2FfA",
@@ -199,13 +184,11 @@
             return videoIds[randomIndex];
         }
 
-        // Charger une vidéo
         function loadVideo(videoId) {
             const iframe = document.getElementById("videoFrame");
             iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&autoplay=1`;
         }
 
-        // Lecture/Pause
         let isPlaying = false;
         function togglePlayPause() {
             const iframe = document.getElementById("videoFrame");
@@ -221,7 +204,6 @@
             isPlaying = !isPlaying;
         }
 
-        // Contrôle du volume
         function adjustVolume() {
             const volume = document.getElementById("volumeControl").value;
             const iframe = document.getElementById("videoFrame");
@@ -229,24 +211,21 @@
             player.postMessage(`{"event":"command","func":"setVolume","args":[${volume}]}`, '*');
         }
 
-        // Charger la vidéo suivante
         function nextVideo() {
             const randomVideoId = getRandomVideoId();
             loadVideo(randomVideoId);
         }
 
-        // Désactiver le clic droit
         document.addEventListener("contextmenu", function(e) {
-            e.preventDefault(); // Désactive le menu contextuel
-            document.getElementById("noRightClickMessage").style.display = "block"; // Afficher le message
+            e.preventDefault();
+            document.getElementById("noRightClickMessage").style.display = "block";
             setTimeout(function() {
-                document.getElementById("noRightClickMessage").style.display = "none"; // Cacher le message après 3 secondes
+                document.getElementById("noRightClickMessage").style.display = "none";
             }, 3000);
         });
 
-        // Initialisation
         window.onload = function() {
-            displayAd(currentAdIndex); // Afficher une publicité dès le chargement de la page
+            displayAd(currentAdIndex);
             const randomVideoId = getRandomVideoId();
             loadVideo(randomVideoId);
             document.getElementById("playPauseBtn").addEventListener("click", togglePlayPause);
