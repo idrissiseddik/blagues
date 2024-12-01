@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blagues Françaises</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #007BFF; /* Bleu */
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .advertisement {
+      background-color: #0056b3; /* Bleu foncé */
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 80px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+    }
+
+    /* Zone défilable entre header et footer */
+    .scrollable-content {
+      margin-top: 20px;
+      margin-bottom: 80px;
+      padding: 20px;
+      overflow-y: scroll;  /* Permet de faire défiler sans afficher la barre */
+      flex-grow: 1;
+      height: calc(100vh - 160px); /* Hauteur de la zone défilable entre header et footer */
+    }
+
+    .scrollable-content::-webkit-scrollbar {
+      display: none; /* Masque la barre de défilement */
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid #ddd;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .blague-text {
+      font-size: 16px; /* Taille réduite de la police */
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: 500;
+      text-align: justify;
+    }
+
+    .author {
+      font-size: 14px;
+      color: #777;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #007BFF; /* Bleu */
+      color: white;
+      text-align: center;
+      padding: 15px; /* Réduit la hauteur du footer */
+      font-size: 12px; /* Réduit la taille de la police */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    Blagues Françaises
+  </header>
+
+  <div class="advertisement">
+    <p>Cette zone est réservée à la publicité !</p>
+    <p>Pour plus d'infos, visitez notre <a href="sites-amis.html" target="_blank">site partenaire</a></p>
+  </div>
+
+  <!-- Zone défilable -->
+  <div class="scrollable-content">
+    <!-- Carte de blague 1 -->
+    <div class="card">
+      <p class="blague-text">On m’a dit que rire était bon pour la santé, mais je n’ai jamais vu un médecin prescrire des blagues!</p>
+      <p class="author">Envoyée par : <strong>Ahmed</strong></p>
+    </div>
+
+    <!-- Carte de blague 2 -->
+    <div class="card">
+      <p class="blague-text">Un voleur est passé par ma fenêtre... Mais heureusement, il a oublié son cadenas.</p>
+      <p class="author">Envoyée par : <strong>Fatima</strong></p>
+    </div>
+
+    <!-- Carte de blague 3 -->
+    <div class="card">
+      <p class="blague-text">Qu'est-ce qu'un chat dit quand il a mal ? "Miaouuuu !"</p>
+      <p class="author">Envoyée par : <strong>Youssef</strong></p>
+    </div>
+
+    <!-- Carte de blague 4 -->
+    <div class="card">
+      <p class="blague-text">Pourquoi les plongeurs plongent-ils toujours en arrière et jamais en avant ? Parce que sinon ils tombent toujours dans le bateau !</p>
+      <p class="author">Envoyée par : <strong>Salma</strong></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Blagues Françaises | Site Développé par M.Seddik Elidrissi</p>
+  </footer>
+
+</body>
+</html>

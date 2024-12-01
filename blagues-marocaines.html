@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nokate Maghribia</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #ff6600; /* Orange */
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .advertisement {
+      background-color: #e65c00; /* Orange foncé */
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-top: 80px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+    }
+
+    /* Zone défilable entre header et footer */
+    .scrollable-content {
+      margin-top: 20px;
+      margin-bottom: 80px;
+      padding: 20px;
+      overflow-y: scroll;  /* Permet de faire défiler sans afficher la barre */
+      flex-grow: 1;
+      height: calc(100vh - 160px); /* Hauteur de la zone défilable entre header et footer */
+    }
+
+    .scrollable-content::-webkit-scrollbar {
+      display: none; /* Masque la barre de défilement */
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid #ddd;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+    }
+
+    .blague-text {
+      font-size: 16px; /* Taille réduite de la police */
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 15px;
+      font-weight: 500;
+      text-align: justify;
+    }
+
+    .author {
+      font-size: 14px;
+      color: #777;
+      margin-top: 15px;
+      font-style: italic;
+    }
+
+    footer {
+      background-color: #ff6600; /* Orange */
+      color: white;
+      text-align: center;
+      padding: 15px; /* Réduit la hauteur du footer */
+      font-size: 12px; /* Réduit la taille de la police */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    Nokate Maghribia
+  </header>
+
+  <div class="advertisement">
+    <p>Cette zone est réservée à la publicité !</p>
+    <p>Pour plus d'infos, visitez notre <a href="sites-amis.html" target="_blank">site partenaire</a></p>
+  </div>
+
+  <!-- Zone défilable -->
+  <div class="scrollable-content">
+    <!-- Carte de blague 1 -->
+    <div class="card">
+      <p class="blague-text">مبوق وقف مورا واحد مكلخ ف الڭيشي.
+
+شوية بدا المبوق كيضحك.
+
+سولو المكلخ: علاش كضحك؟
+
+قال ليه المبوق: عرفت الكود ديالك.
+
+قال ليه المكلخ: أشنو هو يالاه؟
+
+قال ليه المبوق: نجمة، نجمة، نجمة، نجمة.
+
+شبع فيه المكلخ ضحك وقال ليه: غلط، الكود ديالي هو 4011 
+ !</p>
+      <p class="author">Envoyée par : <strong>Ahmed</strong></p>
+    </div>
+
+    <!-- Carte de blague 2 -->
+    <div class="card">
+      <p class="blague-text">واحد المرا حاملة تافقات مع راجلها إيلا ولدو بنت يسميوها مبروكة وإيلا ولدوا ولد يسميوه مبروك ملي ولدات المرا، خرج الطبيب عند الراجل وقال ليه: ألف مبروك وهو يسخف الراجل مسكين</p>
+      <p class="author">Envoyée par : <strong>Fatima</strong></p>
+    </div>
+
+    <!-- Carte de blague 3 -->
+    <div class="card">
+      <p class="blague-text">واحد الدري مدة هادي ماشاف واحد صاحبو قال والله حتا نمشي نسول عليه مشا لدار ديالهم دق دق خرجات مو… سولها قالت ليه اولدي من داك النهار سخرناه يجيب اللحم مارجاعش قال ليها و شنو درتو؟؟ قالت ليه الدجاج"</p>
+      <p class="author">Envoyée par : <strong>Youssef</strong></p>
+    </div>
+
+    <!-- Carte de blague 4 -->
+    <div class="card">
+      <p class="blague-text">هذا واحد البناي شعلت فيه العفية…حتى لقا راسو ف السبيطار مجبص…و هو يعيط لفرملية سولها…قليها واش انا تحرقت ولا تهرست؟؟؟…قتلو لا نت تحرقتي…ولكن صحابك البْنايا ملي بغاو يطفيواك….طفاواك ب البالات</p>
+      <p class="author">Envoyée par : <strong>Salma</strong></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Nokate Maghribia | Site Développé par M.Seddik Elidrissi</p>
+  </footer>
+
+</body>
+</html>

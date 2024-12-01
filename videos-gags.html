@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos Gags</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        header {
+            background-color: #004085; /* Nouvelle couleur de fond pour le header */
+            color: white; /* Couleur du texte */
+            text-align: center;
+            padding: 15px; /* Réduire le padding pour un header plus compact */
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .advertisement {
+            background-color: #FFDD57;
+            color: #333;
+            padding: 10px;
+            text-align: center;
+            margin-top: 60px;
+            width: 80%;
+            max-width: 600px;
+            height: 70px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .advertisement a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .advertisement p {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        .video-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: absolute;
+            bottom: 50px;
+            width: 100%;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .volume-control {
+            width: 100px;
+            margin-left: 10px;
+        }
+        footer {
+            text-align: center;
+            background-color: #222; /* Nouvelle couleur de fond pour le footer */
+            color: white;
+            padding: 5px; /* Réduire le padding du footer */
+            font-size: 12px; /* Réduire la taille de l'écriture */
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .no-right-click {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #007BFF;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            display: none; /* Masqué par défaut */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Videos Gags</h1>
+        <p>Le meilleur de l'humour en vidéos gags pour vous divertir sans fin !</p>
+    </header>
+
+    <!-- Zone publicitaire dynamique -->
+    <div class="advertisement" id="advertisement">
+        <!-- Le contenu publicitaire sera injecté ici par JavaScript -->
+    </div>
+
+    <div class="video-container">
+        <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <div class="controls">
+        <button class="btn" id="playPauseBtn">Lire</button>
+        <button class="btn" id="nextBtn">Suivant</button>
+        <label for="volumeControl" style="color: #007BFF; margin-left: 20px;">Volume</label>
+        <input type="range" id="volumeControl" class="volume-control" min="0" max="100" value="100">
+    </div>
+
+  <footer>
+    <p>&copy; 2024 Vidéos Gags | Site Développé par M.Seddik Elidrissi</p>
+  </footer>
+
+    <!-- Message de désactivation du clic droit -->
+    <div class="no-right-click" id="noRightClickMessage">
+        Développé par M.Seddik El Idrissi
+    </div>
+
+    <script>
+        // Liste des sites amis et leurs slogans
+        const ads = [
+            { url: "https://idrissiseddik.github.io/quran", slogan: "La beauté du Saint Coran, accessible à tous, partout.. - Cliquez ici" },
+            { url: "https://idrissiseddik.github.io/radios", slogan: "Le Maroc vous parle, écoutez ses radios pour ne rien manquer ! - Cliquez ici." },
+            { url: "https://idrissiseddik.github.io/blagues", slogan: "Le rire est la meilleure médecine, venez en prendre une dose ! - Cliquez ici." }
+        ];
+
+        // Fonction pour afficher une publicité
+        function displayAd(index) {
+            const ad = ads[index];
+            const adContainer = document.getElementById('advertisement');
+            adContainer.innerHTML = `
+                <a href="${ad.url}" target="_blank">${ad.slogan}</a>
+            `;
+        }
+
+        // Affichage dynamique des publicités toutes les 5 secondes
+        let currentAdIndex = 0;
+        function cycleAds() {
+            displayAd(currentAdIndex);
+            currentAdIndex = (currentAdIndex + 1) % ads.length; // Revenir à la première publicité après la dernière
+        }
+        setInterval(cycleAds, 5000); // Changer toutes les 5 secondes
+
+        // Fonction pour obtenir un ID vidéo aléatoire
+        const videoIds = [
+            "WiXocnloLxM", 
+            "2v3mLxd2FfA",
+            "-6xp7ngKs1w",
+            "UQbqKmcp_ek"
+        ];
+
+        function getRandomVideoId() {
+            const randomIndex = Math.floor(Math.random() * videoIds.length);
+            return videoIds[randomIndex];
+        }
+
+        // Charger une vidéo
+        function loadVideo(videoId) {
+            const iframe = document.getElementById("videoFrame");
+            iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&autoplay=1`;
+        }
+
+        // Lecture/Pause
+        let isPlaying = false;
+        function togglePlayPause() {
+            const iframe = document.getElementById("videoFrame");
+            const player = iframe.contentWindow;
+
+            if (isPlaying) {
+                player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                document.getElementById("playPauseBtn").textContent = "Lire";
+            } else {
+                player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                document.getElementById("playPauseBtn").textContent = "Pause";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Contrôle du volume
+        function adjustVolume() {
+            const volume = document.getElementById("volumeControl").value;
+            const iframe = document.getElementById("videoFrame");
+            const player = iframe.contentWindow;
+            player.postMessage(`{"event":"command","func":"setVolume","args":[${volume}]}`, '*');
+        }
+
+        // Charger la vidéo suivante
+        function nextVideo() {
+            const randomVideoId = getRandomVideoId();
+            loadVideo(randomVideoId);
+        }
+
+        // Désactiver le clic droit
+        document.addEventListener("contextmenu", function(e) {
+            e.preventDefault(); // Désactive le menu contextuel
+            document.getElementById("noRightClickMessage").style.display = "block"; // Afficher le message
+            setTimeout(function() {
+                document.getElementById("noRightClickMessage").style.display = "none"; // Cacher le message après 3 secondes
+            }, 3000);
+        });
+
+        // Initialisation
+        window.onload = function() {
+            displayAd(currentAdIndex); // Afficher une publicité dès le chargement de la page
+            const randomVideoId = getRandomVideoId();
+            loadVideo(randomVideoId);
+            document.getElementById("playPauseBtn").addEventListener("click", togglePlayPause);
+            document.getElementById("nextBtn").addEventListener("click", nextVideo);
+            document.getElementById("volumeControl").addEventListener("input", adjustVolume);
+        };
+    </script>
+
+</body>
+</html>
