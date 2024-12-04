@@ -1,253 +1,268 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videos Gags</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-bottom: 60px;
-            margin: 0;
-            position: relative;
-        }
-        header {
-            background-color: #004085;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 10;
-        }
-        .advertisement {
-            background-color: #FFDD57;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-            margin-top: 100px;
-            width: 80%;
-            max-width: 600px;
-            height: 70px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        .advertisement a {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .video-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            max-width: 1000px;
-            height: auto;
-            padding: 10px;
-            margin-top: 20px;
-        }
-        iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 450px;
-            border: none;
-            border-radius: 10px;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .btn {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .volume-control {
-            width: 100px;
-            margin-left: 10px;
-        }
-        footer {
-            text-align: center;
-            background-color: #222;
-            color: white;
-            padding: 5px;
-            font-size: 12px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            height: 30px;
-            left: 0;
-        }
-        .no-right-click {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 24px;
-            color: #007BFF;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Humour Vidéos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #ffa500;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background-color: #ffe4b5;
+      border: 2px dashed #ffa500;
+      border-radius: 10px;
+      padding: 40px 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.5em;
+      color: #333;
+    }
+
+    .contact-btn {
+      background-color: #ffa500;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px 30px;
+      cursor: pointer;
+      font-size: 1.2em;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .contact-btn:hover {
+      background-color: #e67e22;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #fff;
+      font-weight: bold;
+      margin: 10px;
+      width: 200px;
+      text-align: center;
+      font-size: 1.2em;
+      transition: background-color 0.3s;
+    }
+
+    .btn-videos-marocaine {
+      background-color: #d35400;
+    }
+
+    .btn-videos-marocaine:hover {
+      background-color: #c0392b;
+    }
+
+    .btn-autres-videos {
+      background-color: #2980b9;
+    }
+
+    .btn-autres-videos:hover {
+      background-color: #3498db;
+    }
+
+    /* Modale */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 30px 20px; /* Espace intérieur ajouté à gauche et à droite */
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 1.8em;
+    }
+
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+
+    .modal-content button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+
+    .modal-content button:hover {
+      background-color: #218838;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      font-size: 1.5em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-close:hover {
+      background: #cc0000;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #333;
+      color: white;
+      font-size: 0.8em;
+      padding: 10px;
+      border-top: 2px solid #ffa500;
+    }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>Videos Gags</h1>
-        <p>Le meilleur de l'humour en vidéos gags pour vous divertir sans fin !</p>
-    </header>
-
-    <div class="advertisement" id="advertisement"></div>
-
-    <div class="video-container">
-        <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="container">
+    <h1>Page Humoristique</h1>
+    <div class="card">
+      <h2>Cette espace est réservé à la publicité</h2>
+      <button class="contact-btn" onclick="openModal()">Contact</button>
     </div>
-
-    <div class="controls">
-        <button class="btn" id="playPauseBtn"><i class="fas fa-play"></i></button>
-        <button class="btn" id="nextBtn"><i class="fas fa-step-forward"></i></button>
-        <label for="volumeControl" style="color: #007BFF; margin-left: 20px;">Volume</label>
-        <input type="range" id="volumeControl" class="volume-control" min="0" max="100" value="100">
+    <h3>Choisissez le type de vidéos :</h3>
+    <div class="buttons">
+      <a href="vhm.html" class="btn-videos-marocaine">Vidéos Humour Marocaine</a>
+      <a href="avh.html" class="btn-autres-videos">Autres Vidéos Humour</a>
     </div>
+  </div>
 
-    <footer>
-        <p>&copy; 2024 Vidéos Gags | Site Développé par M.Seddik Elidrissi</p>
-    </footer>
-
-    <div class="no-right-click" id="noRightClickMessage">
-        Développé par M.Seddik El Idrissi
+  <!-- Modale -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Nom" required />
+        <textarea id="message" placeholder="Message" rows="5" required></textarea>
+        <button type="button" onclick="sendToWhatsApp()">Envoyer</button>
+      </form>
     </div>
+  </div>
 
-    <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function openModal() {
+      document.getElementById("contactModal").style.display = "flex";
+    }
 
-    <script>
-        const ads = [
-            { url: "https://idrissiseddik.github.io/quran", slogan: "La beauté du Saint Coran, accessible à tous, partout.. - Cliquez ici" },
-            { url: "https://idrissiseddik.github.io/radios", slogan: "Le Maroc vous parle, écoutez ses radios pour ne rien manquer ! - Cliquez ici." },
-            { url: "https://idrissiseddik.github.io/blagues", slogan: "Le rire est la meilleure médecine, venez en prendre une dose ! - Cliquez ici." }
-        ];
+    function closeModal() {
+      document.getElementById("contactModal").style.display = "none";
+    }
 
-        function displayAd(index) {
-            const ad = ads[index];
-            const adContainer = document.getElementById('advertisement');
-            adContainer.innerHTML = `<a href="${ad.url}" target="_blank">${ad.slogan}</a>`;
-        }
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
 
-        let currentAdIndex = 0;
-        function cycleAds() {
-            displayAd(currentAdIndex);
-            currentAdIndex = (currentAdIndex + 1) % ads.length;
-        }
-        setInterval(cycleAds, 5000);
+      if (name && message) {
+        const whatsappUrl = `https://wa.me/212608975435?text=Nom: ${encodeURIComponent(
+          name
+        )}%0A%0AMessage: ${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, "_blank");
+      } else {
+        alert("Veuillez remplir tous les champs.");
+      }
+    }
 
-        const videoIds = [
-            "WiXocnloLxM", 
-            "2v3mLxd2FfA",
-            "7tWHQu05iZU",
-            "nIHyr_fp_yI",
-            "PLcWXaIYpyQ",
-            "UwkunGacnRc",
-            "ZyC23Kv-ut8",
-            "9NZBRW99TPw",
-            "-6xp7ngKs1w",
-            "UQbqKmcp_ek"
-        ];
+    // Fermer la modale en cliquant à l'extérieur
+    window.onclick = function (event) {
+      const modal = document.getElementById("contactModal");
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
 
-        function getRandomVideoId() {
-            const randomIndex = Math.floor(Math.random() * videoIds.length);
-            return videoIds[randomIndex];
-        }
-
-        let player;
-        function onYouTubeIframeAPIReady() {
-            const iframe = document.getElementById("videoFrame");
-            player = new YT.Player(iframe, {
-                videoId: getRandomVideoId(),
-                events: {
-                    'onStateChange': onPlayerStateChange
-                }
-            });
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data === YT.PlayerState.ENDED) {
-                nextVideo(); // Passer à la vidéo suivante
-            }
-        }
-
-        function loadVideo(videoId) {
-            const iframe = document.getElementById("videoFrame");
-            iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=0&autoplay=1&rel=0`; // rel=0 pour désactiver les vidéos suggérées
-        }
-
-        function nextVideo() {
-            const randomVideoId = getRandomVideoId();
-            loadVideo(randomVideoId);
-        }
-
-        let isPlaying = false;
-        function togglePlayPause() {
-            const iframe = document.getElementById("videoFrame");
-            const player = iframe.contentWindow;
-
-            if (isPlaying) {
-                player.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                document.getElementById("playPauseBtn").innerHTML = '<i class="fas fa-play"></i>';
-            } else {
-                player.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                document.getElementById("playPauseBtn").innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
-        }
-
-        function adjustVolume() {
-            const volume = document.getElementById("volumeControl").value;
-            const iframe = document.getElementById("videoFrame");
-            const player = iframe.contentWindow;
-            player.postMessage(`{"event":"command","func":"setVolume","args":[${volume}]}`, '*');
-        }
-
-        document.getElementById("playPauseBtn").addEventListener("click", togglePlayPause);
-        document.getElementById("nextBtn").addEventListener("click", nextVideo);
-        document.getElementById("volumeControl").addEventListener("input", adjustVolume);
-
-        window.onload = function() {
-            loadVideo(getRandomVideoId());
-            cycleAds();
-        };
-    </script>
+  <!-- Footer -->
+  <footer>
+    © 2024 Vidéos Gags | Site Développé par M.Seddik Elidrissi
+  </footer>
 </body>
 </html>
